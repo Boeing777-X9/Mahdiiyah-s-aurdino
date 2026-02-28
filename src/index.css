@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 180 10% 90%;
+
+    --card: 220 18% 11%;
+    --card-foreground: 180 10% 90%;
+
+    --popover: 220 18% 11%;
+    --popover-foreground: 180 10% 90%;
+
+    --primary: 145 70% 45%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 180 10% 80%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 0 75% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 145 70% 45%;
+
+    --radius: 0.75rem;
+
+    --warning: 45 90% 50%;
+    --warning-foreground: 220 20% 7%;
+    --safe: 145 70% 45%;
+    --danger: 0 75% 55%;
+    --info: 200 80% 55%;
+
+    --sidebar-background: 220 18% 9%;
+    --sidebar-foreground: 180 10% 90%;
+    --sidebar-primary: 145 70% 45%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 180 10% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 145 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+/* ===== ADAS DASHBOARD STYLES ===== */
+
+.font-mono-tech {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 15px hsl(145 70% 45% / 0.3), 0 0 40px hsl(145 70% 45% / 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px hsl(0 75% 55% / 0.4), 0 0 40px hsl(0 75% 55% / 0.15);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 15px hsl(45 90% 50% / 0.3), 0 0 40px hsl(45 90% 50% / 0.1);
+}
+
+/* Gauge arc */
+.gauge-ring {
+  stroke-dasharray: 251;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Pulse animation for alerts */
+@keyframes alert-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-alert-pulse {
+  animation: alert-pulse 0.8s ease-in-out infinite;
+}
+
+/* Scan line effect on the header */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(145 70% 45% / 0.4), transparent);
+  animation: scanline 3s linear infinite;
+}
+
+/* Status indicator dot */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+/* Grid pattern background */
+.grid-bg {
+  background-image: 
+    linear-gradient(hsl(220 15% 15% / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(220 15% 15% / 0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Card hover */
+.sensor-card {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.sensor-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Progress bar for alcohol level */
+.alcohol-bar {
+  transition: width 0.5s ease;
+}
+
+/* Connection status badge */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
